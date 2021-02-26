@@ -1,22 +1,30 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//Prompting and choosing
-var criteria = function() {
-  //Ask user what criteria they want for their password
-  var lengthChoice = window.prompt("How long would you like your password to be?\nPick between 8 and 128 characters.");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
+//Prompting and choosing criteria for the password
+var criteria = function() {
+  //Prompt asking the user their desired password length
+  var lengthChoice = window.prompt("How long would you like your password to be?\nIt can only be from 8 to 128 characters.");
+  
   if (lengthChoice < 8 || lengthChoice > 128) {
     window.alert("Invalid length.");
     //? How to go back to lengthChoice prompt?//
   }
 
-  //? This goes with the Random Functions!!//
-  if (lengthChoice >= 8 && lengthChoice <= 128) {
-    //? Where is this info stored so it can be used to generate password later?//
+  if (!lengthChoice) {
+    window.alert("Please choose a password length.")
   }
 
-  var uppercaseChoice = window.prompt("Would you like Uppercase letters in your password?\nAnswer: Y or N");
+  /*//? This goes with the Random Functions!!//
+  if (lengthChoice >= 8 && lengthChoice <= 128) {
+    //? Where is this info stored so it can be used to generate password later?//
+  }*/
+
+  //Prompt giving user the choice of whether they want Uppercase letters in their password
+  var uppercaseChoice = window.prompt("Would you like Uppercase letters included in your password?\nAnswer: Y or N");
 
   if (!uppercaseChoice) {
     window.alert("Please answer Y or N");
@@ -24,15 +32,33 @@ var criteria = function() {
   }
   //? If == Y/N statements?//
 
-  var lowercaseChoice = window.prompt("Would you like lowercase letters in your password?\nAnswer: Y or N")
+  //Prompt giving user the choice of whether they want lowercase letters in their password
+  var lowercaseChoice = window.prompt("Would you like lowercase letters included in your password?\nAnswer: Y or N")
 
   if (!lowercaseChoice) {
     window.alert("Please answer Y or N");
+    //? How to go back to lowercaseChoice?//
+  }
+  //? If == Y/N statements?//
+
+  //Prompt asking user if they want numbers in their pasword
+  var numericChoice = window.prompt("Would you like numbers included in your password?\nAnswer: Y or N");
+
+  if (!numericChoice) {
+    window.alert("Please answer Y or N");
+    //? How to go back to numericChoice?//
+  }
+
+  //Prompt giving user the choice of whether they want special characters in their password
+  var characterChoice = window.prompt("Would you like special characters included in your password?\nAnswer: Y or N");
+
+  if (!characterChoice) {
+    window.alert("Please answer Y or N");
+    //? How to go back to characterChoice?//
   }
 }
 
 criteria();
-
 
 // Write password to the #password input
 function writePassword() {
@@ -42,10 +68,6 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 
 
 
