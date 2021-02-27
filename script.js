@@ -8,8 +8,9 @@ generateBtn.addEventListener("click", writePassword);
 var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numericChoice = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialCharacChoice = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."]
-
+var specialCharacChoice = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."];
+console.log(numericChoice);
+console.log(specialCharacChoice);
 // Prompting and choosing criteria for the password
 function generatePassword() {
   //Prompt asking the user their desired password length
@@ -22,16 +23,16 @@ function generatePassword() {
   }
 
   // Prompt giving user the choice of whether they want Uppercase letters in their password
-  var uppercaseChoice = window.confirm("Would you like Uppercase letters included in your password?\nAnswer: Y or N");
+  var uppercaseChoice = window.confirm("Would you like Uppercase letters included in your password?\n'OK' = Yes\n'Cancel' = No");
 
   // Prompt giving user the choice of whether they want lowercase letters in their password
-  var lowercaseChoice = window.confirm("Would you like lowercase letters included in your password?\nAnswer: Y or N")
+  var lowercaseChoice = window.confirm("Would you like lowercase letters included in your password?\n'OK' = Yes\n'Cancel' = No")
 
   // Prompt asking user if they want numbers in their pasword
-  var numericChoice = window.confirm("Would you like numbers included in your password?\nAnswer: Y or N");
+  var numericChoice = window.confirm("Would you like numbers included in your password?\n'OK' = Yes\n'Cancel' = No");
 
   // Prompt giving user the choice of whether they want special characters in their password
-  var specialCharacChoice = window.confirm("Would you like special characters included in your password?\nAnswer: Y or N");
+  var specialCharacChoice = window.confirm("Would you like special characters included in your password?\n'OK' = Yes\n'Cancel' = No");
 
   // Create a "basket" where all of the possible characters go into
   var basket = []
@@ -43,8 +44,17 @@ function generatePassword() {
 
   if (lowercaseChoice) {
     basket = basket.concat(lowercaseLetters);
-    console.log(characterBasket);
   }
+
+  if (numericChoice) {
+    basket = basket.concat(numericChoice);
+  }
+
+  if (specialCharacChoice) {
+    basket = basket.concat(specialCharacChoice);
+  }
+
+  console.log(basket);
   
   return"password";
 }
