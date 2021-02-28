@@ -7,7 +7,7 @@ generateBtn.addEventListener("click", writePassword);
 // Prompting and choosing criteria for the password
 function generatePassword() {
   //Prompt asking the user their desired password length
-  var lengthChoice = window.prompt("How long would you like your password to be?\nIt can only be from 8 to 128 characters.");
+  var lengthChoice = window.prompt("How long would you like your password to be?\nIt can be from 8 to 128 characters.");
   
   if (lengthChoice < 8 || lengthChoice > 128) {
     window.alert("Invalid length.");
@@ -16,7 +16,7 @@ function generatePassword() {
   }
 
   // Turning the type of the lengthChoice from "string" to "number"
-  var lengthChoice = +lengthChoice.value;
+  lengthChoice = +lengthChoice.value;
   
   // Prompt giving user the choice of whether they want Uppercase letters in their password
   var uppercaseChoice = window.confirm("Would you like Uppercase letters included in your password?\n'OK' = Yes\n'Cancel' = No");
@@ -30,10 +30,54 @@ function generatePassword() {
   // Prompt giving user the choice of whether they want special characters in their password
   var specialCharacChoice = window.confirm("Would you like special characters included in your password?\n'OK' = Yes\n'Cancel' = No");
 
-  /* Loop 
+  // Functions picking random characters
+  // Pick a random Uppercase letter 
+    function getRandomUpper() {
+    if (uppercaseChoice) {
+      return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    } else {
+      return;
+    }
+  };
+  // Pick a random lowercase letter
+  function getRandomLower() {
+    if (lowercaseChoice) {
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    } else {
+      return;
+    }
+  };
+  // Pick a random number
+  function getRandomNumeric() {
+    if (numericChoice) {
+    return String.fromCharCode(Math.floor(Math.random() * 10) +48);
+    } else {
+      return;
+    }
+  };
+  // Pick a random special character
+  function getRandomSpecCharac() {
+    var symbol = "!@#$%^&*()[]=<>/,.|~?";
+    if (specialCharacChoice) {
+    return symbol[Math.floor(Math.random() * symbol.length)];
+    } else {
+      return;
+    }
+  }
+
+  // Array of random-choices functions 
+  var arrayRandomChoices = [getRandomUpper(), getRandomLower(), getRandomNumeric(), getRandomSpecCharac()];
+  
+  // TODO: Loop that runs as many times as the lengthChoice. What runs inside of it? -> the picking of the random characters of desired types
   for (var i = 0; i < lengthChoice; i++) {
-    if 
-  }*/
+    /*if (lengthChoice > arrayRandomChoice.length) {
+      set [i] = 0;
+    }*/
+    console.log(arrayRandomChoices[i]);
+  }
+
+  // TODO: Connect the result of password generation to the text field 
+
 }
 
 // Write password to the #password input
@@ -44,36 +88,6 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Functions picking random characters
-
-// Pick a random Uppercase letter
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
-console.log(getRandomUpper());
-
-// Pick a random Lowercase letter
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() *26) + 97);
-}
-
-console.log(getRandomLower());
-
-// Pick a random number
-function getRandomNumeric() {
-  return String.fromCharCode(Math.floor(Math.random() *10) +48);
-}
-
-console.log(getRandomNumeric());
-
-// Pick a random special character
-function getRandomSpecCharac() {
-  var symbol = "!@#$%^&*()[]=<>/,.|~?";
-  return symbol[Math.floor(Math.random() * symbol.length)];
-}
-
-console.log(getRandomSpecCharac());
 
 
 
