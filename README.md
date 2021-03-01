@@ -1,1 +1,5 @@
 # Password-Generator
+
+GOAL: 
+
+
