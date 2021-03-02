@@ -38,40 +38,40 @@ function generatePassword() {
 
     // If uppercase letters are included in the password, pick them randomly from the uppercase letters array
     if (uppercaseChoice) {
-      var uppercaseArrayIndex = Math.floor(Math.random() * (uppercaseArray.length - 1));
+      var uppercaseArrayIndex = Math.floor(Math.random() * (uppercaseArray.length - 1)) +1;
       i++;
-      if (i >= lengthChoice) {
-        return;
+      if (i > lengthChoice) {
+        break;
       };
       basket.push(uppercaseArray[uppercaseArrayIndex]);
     };
 
     // If lowercase letters are included in the password, pick them randomly from the uppercase letters array
     if (lowercaseChoice) {
-      var lowercaseArrayIndex = Math.floor(Math.random() * (lowercaseArray.length - 1));
+      var lowercaseArrayIndex = Math.floor(Math.random() * (lowercaseArray.length - 1)) +1;
       i++;
-      if (i >= lengthChoice) {
-        return;
+      if (i > lengthChoice) {
+        break;
       };
       basket.push(lowercaseArray[lowercaseArrayIndex]);
     };
 
     // If numeric characters are included in the password, pick them randomly from the numeric array
     if (numericChoice) {
-      var numericArrayIndex = Math.floor(Math.random() * (numericArray.length - 1));
+      var numericArrayIndex = Math.floor(Math.random() * (numericArray.length - 1)) +1;
       i++;
-      if (i >= lengthChoice) {
-        return;
+      if (i > lengthChoice) {
+        break;
       };
       basket.push(numericArray[numericArrayIndex]);
     };
 
     // If special characters are included in the password, pick them randomly from the special character array
     if (specialCharacChoice) {
-      var specialCharacArrayIndex = Math.floor(Math.random() * (specialCharacArray.length - 1));
+      var specialCharacArrayIndex = Math.floor(Math.random() * (specialCharacArray.length - 1)) +1;
       i++;
-      if (i >= lengthChoice) {
-        return;
+      if (i > lengthChoice) {
+        break;
       };
       basket.push(specialCharacArray[specialCharacArrayIndex]);
     };
@@ -79,11 +79,7 @@ function generatePassword() {
 
   return basket.join("");
 
-  console.log(basket);
-  console.log(basket.join(" "));
 };
-
-  // TODO: Connect the result of password generation to the text field
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -95,3 +91,5 @@ function writePassword() {
 
   passwordText.value = password;
 }
+
+
