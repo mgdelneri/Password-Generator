@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numericArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialCharacArray = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."];
+var specialCharacArray = ["@", "%", "+", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."];
 
 // Create a variable in which the chosen character types will be put into to create the password
 var basket = [];
@@ -40,9 +40,9 @@ function generatePassword() {
     if (uppercaseChoice) {
       var uppercaseArrayIndex = Math.floor(Math.random() * (uppercaseArray.length - 1));
       i++;
-      /*if (i >= lengthChoice) {
+      if (i >= lengthChoice) {
         return;
-      };*/
+      };
       basket.push(uppercaseArray[uppercaseArrayIndex]);
     };
 
@@ -50,9 +50,9 @@ function generatePassword() {
     if (lowercaseChoice) {
       var lowercaseArrayIndex = Math.floor(Math.random() * (lowercaseArray.length - 1));
       i++;
-      /*if (i >= lengthChoice) {
-        break;
-      };*/
+      if (i >= lengthChoice) {
+        return;
+      };
       basket.push(lowercaseArray[lowercaseArrayIndex]);
     };
 
@@ -60,9 +60,9 @@ function generatePassword() {
     if (numericChoice) {
       var numericArrayIndex = Math.floor(Math.random() * (numericArray.length - 1));
       i++;
-      /*if (i >= lengthChoice) {
-        break;
-      };*/
+      if (i >= lengthChoice) {
+        return;
+      };
       basket.push(numericArray[numericArrayIndex]);
     };
 
@@ -70,16 +70,18 @@ function generatePassword() {
     if (specialCharacChoice) {
       var specialCharacArrayIndex = Math.floor(Math.random() * (specialCharacArray.length - 1));
       i++;
-      /*if (i >= lengthChoice) {
-        break
-      };*/
+      if (i >= lengthChoice) {
+        return;
+      };
       basket.push(specialCharacArray[specialCharacArrayIndex]);
     };
-
-    console.log(basket);
   };
-}
 
+  return basket.join("");
+
+  console.log(basket);
+  console.log(basket.join(" "));
+};
 
   // TODO: Connect the result of password generation to the text field
 
